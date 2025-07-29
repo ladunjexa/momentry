@@ -2,7 +2,7 @@
 
 import SectionHeader from "@/components/marketing/layout/section-header";
 import PricingSection from "@/components/shared/pricing-section";
-import { headerWrapper } from "@/components/shared/primitives";
+import { headerWrapper, sectionWrapper } from "@/components/shared/primitives";
 import {
   Accordion,
   AccordionItem,
@@ -37,7 +37,7 @@ export default function Page() {
     },
   ];
   return (
-    <>
+    <main className={sectionWrapper()}>
       <Spacer y={4} />
       <SectionHeader page="pricing" />
       <PricingSection />
@@ -125,6 +125,6 @@ export default function Page() {
           </AccordionItem>
         ))}
       </Accordion>
-    </>
+    </main>
   );
 }

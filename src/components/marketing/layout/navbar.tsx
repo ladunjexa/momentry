@@ -79,7 +79,7 @@ export default function Navbar() {
         <ul className="hidden lg:flex gap-4 justify-start ml-4 rtl:ml-0 rtl:mr-4">
           {navigationItems.map((item) => (
             <NavbarItem as="li" key={uuidv4()} isActive={isActive(item.href)}>
-              <Link href={item.href}>{t(item.label)}</Link>
+              <Link href={"#"}>{t(item.label)}</Link>
             </NavbarItem>
           ))}
         </ul>
@@ -122,7 +122,7 @@ export default function Navbar() {
       <NavbarMenu className="z-[9999]">
         {navigationItems.map((item) => (
           <NavbarMenuItem key={uuidv4()} isActive={isActive(item.href)}>
-            <Link href={item.href} onClick={toggleMenu}>
+            <Link href={"#"} onClick={toggleMenu}>
               {t(item.label)}
             </Link>
           </NavbarMenuItem>
