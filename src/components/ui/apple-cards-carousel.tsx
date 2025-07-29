@@ -5,7 +5,6 @@ import React, {
   useState,
   createContext,
   useContext,
-  JSX,
 } from "react";
 import {
   IconArrowNarrowLeft,
@@ -16,6 +15,9 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
 import Image, { ImageProps } from "next/image";
 import { useOutsideClick } from "@/hooks/use-outside-click";
+import { JSX } from "react";
+import { useLocale } from "next-intl";
+import { getLangDir } from "rtl-detect";
 
 interface CarouselProps {
   items: JSX.Element[];
@@ -38,55 +40,43 @@ export const CarouselContext = createContext<{
 });
 
 export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
+  const locale = useLocale();
+  const direction = getLangDir(locale);
+  const isRtl = direction === "rtl";
   const carouselRef = React.useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = React.useState(false);
-  const [canScrollRight, setCanScrollRight] = React.useState(true);
+  const [canScrollLeft, setCanScrollLeft] = React.useState(
+    isRtl ? true : false
+  );
+  const [canScrollRight, setCanScrollRight] = React.useState(
+    isRtl ? false : true
+  );
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isRTL, setIsRTL] = useState(false);
-
-  useEffect(() => {
-    // Detect RTL direction
-    const direction = document.documentElement.dir || document.body.dir;
-    setIsRTL(direction === "rtl");
-  }, []);
 
   useEffect(() => {
     if (carouselRef.current) {
       carouselRef.current.scrollLeft = initialScroll;
       checkScrollability();
     }
-  }, [initialScroll, isRTL]);
+  }, [initialScroll]);
 
   const checkScrollability = () => {
     if (carouselRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
 
-      if (isRTL) {
-        // Different browsers handle RTL scrolling differently
-        // Some use negative values, others use positive values starting from maxScroll
-        const maxScrollLeft = scrollWidth - clientWidth;
-        const normalizedScrollLeft = Math.abs(scrollLeft);
-
-        setCanScrollRight(normalizedScrollLeft > 0);
-        setCanScrollLeft(normalizedScrollLeft < maxScrollLeft);
-      } else {
-        setCanScrollLeft(scrollLeft > 0);
-        setCanScrollRight(scrollLeft < scrollWidth - clientWidth);
-      }
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth);
     }
   };
 
   const scrollLeft = () => {
     if (carouselRef.current) {
-      const scrollAmount = isRTL ? 300 : -300;
-      carouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      carouselRef.current.scrollBy({ left: -300, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
     if (carouselRef.current) {
-      const scrollAmount = isRTL ? -300 : 300;
-      carouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      carouselRef.current.scrollBy({ left: 300, behavior: "smooth" });
     }
   };
 
@@ -94,18 +84,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
     if (carouselRef.current) {
       const cardWidth = isMobile() ? 230 : 384; // (md:w-96)
       const gap = isMobile() ? 4 : 8;
-      let scrollPosition;
-
-      if (isRTL) {
-        // In RTL, scroll calculation is reversed
-        const totalWidth = carouselRef.current.scrollWidth;
-        const visibleWidth = carouselRef.current.clientWidth;
-        scrollPosition =
-          totalWidth - visibleWidth - (cardWidth + gap) * (index + 1);
-      } else {
-        scrollPosition = (cardWidth + gap) * (index + 1);
-      }
-
+      const scrollPosition = (cardWidth + gap) * (index + 1);
       carouselRef.current.scrollTo({
         left: scrollPosition,
         behavior: "smooth",
@@ -127,21 +106,16 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
           className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth py-10 [scrollbar-width:none] md:py-20"
           ref={carouselRef}
           onScroll={checkScrollability}
-          style={{ direction: isRTL ? "ltr" : "ltr" }} // Keep scrolling LTR for consistency
         >
           <div
             className={cn(
-              "absolute z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l",
-              isRTL ? "left-0 bg-gradient-to-r" : "right-0 bg-gradient-to-l"
+              "absolute right-0 rtl:left-0 z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l"
             )}
           ></div>
 
           <div
             className={cn(
-              "flex flex-row gap-4",
-              isRTL
-                ? "flex-row-reverse justify-end pr-4"
-                : "justify-start pl-4",
+              "flex flex-row justify-start gap-4 pl-4",
               "mx-auto max-w-7xl" // remove max-w-4xl if you want the carousel to span the full width of its container
             )}
           >
@@ -161,38 +135,27 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                   },
                 }}
                 key={"card" + index}
-                className={cn(
-                  "rounded-3xl",
-                  isRTL
-                    ? "first:pl-[5%] md:first:pl-[33%]"
-                    : "last:pr-[5%] md:last:pr-[33%]"
-                )}
+                className="rounded-3xl last:pr-[5%] md:last:pr-[33%]"
               >
                 {item}
               </motion.div>
             ))}
           </div>
         </div>
-        <div
-          className={cn("flex justify-end gap-2", isRTL ? "ml-10" : "mr-10")}
-        >
+        <div className="mr-10 flex justify-end gap-2">
           <button
             className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
-            onClick={scrollLeft}
-            disabled={!canScrollLeft}
+            onClick={isRtl ? scrollRight : scrollLeft}
+            disabled={isRtl ? !canScrollRight : !canScrollLeft}
           >
-            <IconArrowNarrowLeft
-              className={cn("h-6 w-6 text-gray-500", isRTL && "rotate-180")}
-            />
+            <IconArrowNarrowLeft className="h-6 w-6 text-gray-500 rtl:rotate-180" />
           </button>
           <button
             className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
-            onClick={scrollRight}
-            disabled={!canScrollRight}
+            onClick={isRtl ? scrollLeft : scrollRight}
+            disabled={isRtl ? !canScrollRight : !canScrollRight}
           >
-            <IconArrowNarrowRight
-              className={cn("h-6 w-6 text-gray-500", isRTL && "rotate-180")}
-            />
+            <IconArrowNarrowRight className="h-6 w-6 text-gray-500 rtl:rotate-180" />
           </button>
         </div>
       </div>
@@ -230,9 +193,8 @@ export const Card = ({
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
-  useOutsideClick(containerRef as React.RefObject<HTMLDivElement>, () =>
-    handleClose()
-  );
+  // @ts-expect-error: RefObject is not assignable to type HTMLDivElement
+  useOutsideClick(containerRef, () => handleClose());
 
   const handleOpen = () => {
     setOpen(true);
@@ -247,7 +209,7 @@ export const Card = ({
     <>
       <AnimatePresence>
         {open && (
-          <div className="fixed inset-0 z-50 h-screen overflow-auto">
+          <div className="fixed inset-0 z-[20000] h-screen overflow-auto">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -263,10 +225,10 @@ export const Card = ({
               className="relative z-[60] mx-auto my-10 h-fit max-w-5xl rounded-3xl bg-white p-4 font-sans md:p-10 dark:bg-neutral-900"
             >
               <button
-                className="sticky top-4 flex h-8 w-8 items-center justify-center rounded-full bg-black dark:bg-white ltr:right-0 ltr:ml-auto rtl:left-0 rtl:mr-auto"
+                className="sticky top-4 right-0 rtl:left-0 ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-black dark:bg-white"
                 onClick={handleClose}
               >
-                <IconX className="h-6 w-6 text-default-100 dark:text-default-900" />
+                <IconX className="h-6 w-6 text-neutral-100 dark:text-neutral-900" />
               </button>
               <motion.p
                 layoutId={layout ? `category-${card.title}` : undefined}
@@ -276,7 +238,7 @@ export const Card = ({
               </motion.p>
               <motion.p
                 layoutId={layout ? `title-${card.title}` : undefined}
-                className="mt-4 text-2xl font-semibold text-default-700 md:text-5xl dark:text-white"
+                className="mt-4 text-2xl font-semibold text-neutral-700 md:text-5xl dark:text-white"
               >
                 {card.title}
               </motion.p>
@@ -294,13 +256,13 @@ export const Card = ({
         <div className="relative z-40 p-8">
           <motion.p
             layoutId={layout ? `category-${card.category}` : undefined}
-            className="font-sans text-sm font-medium text-white md:text-base ltr:text-left rtl:text-right"
+            className="text-left rtl:text-right font-sans text-sm font-medium text-white md:text-base"
           >
             {card.category}
           </motion.p>
           <motion.p
             layoutId={layout ? `title-${card.title}` : undefined}
-            className="mt-2 max-w-xs font-sans text-xl font-semibold [text-wrap:balance] text-white md:text-3xl ltr:text-left rtl:text-right"
+            className="mt-2 max-w-xs text-left rtl:text-right font-sans text-xl font-semibold [text-wrap:balance] text-white md:text-3xl"
           >
             {card.title}
           </motion.p>
@@ -324,9 +286,9 @@ export const BlurImage = ({
   alt,
   ...rest
 }: ImageProps) => {
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
   return (
-    <Image
+    <img
       className={cn(
         "h-full w-full transition duration-300",
         isLoading ? "blur-sm" : "blur-0",

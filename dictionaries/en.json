@@ -1,6 +1,187 @@
 {
-  "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+  "pages": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "pricing": "Pricing",
+    "features": "Features",
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  },
+  "marketing": {
+    "hero": {
+      "headline": "Capture Moments. Share Memories. Own the Experience",
+      "subhead": "Momentry is the ultimate event gallery platform - built for seamless photo sharing, smart face-tagging, and efortless guest collaboration.",
+      "cta": {
+        "primary": "Create Your Event",
+        "secondary": "See It in Action"
+      }
+    },
+    "pain-points": {
+      "headline": "Managing Event Photos Shouldn't Be Hard",
+      "subhead": "Tired of scattered photos, forgotten memories, and privacy concerns? Momentry solves these problems with a smart, secure platform.",
+      "bullets": {
+        "item1": {
+          "category": "🔐",
+          "text": "Scattered photos across chats, drives, and social media"
+        },
+        "item2": {
+          "category": "😵‍💫",
+          "text": "Guests forget to send their best memories"
+        },
+        "item3": {
+          "category": "🧠",
+          "text": "No smart way to organize by people or moments"
+        },
+        "item4": {
+          "category": "⏳",
+          "text": "Wasting hours creating galleries and albums manually"
+        },
+        "item5": {
+          "category": "😩",
+          "text": "Privacy concerns with public sharing"
+        },
+        "item6": {
+          "category": "😤",
+          "text": "Frustrating guest experience with multiple links and apps"
+        }
+      }
+    },
+    "features": {
+      "headline": "Every Memory, Beautifully Organized",
+      "subhead": "Momentry's smart features make it easy to capture, organize, and share your event photos.",
+      "cards": {
+        "item1": {
+          "title": "Momentry",
+          "description": "Your event's central hub - every photo, neatly organized and beautifully displayed in a curated timeline.",
+          "className": "col-span-1 lg:col-span-4 border-b lg:border-r rtl:lg:border-l"
+        },
+        "item2": {
+          "title": "Momentry AI",
+          "description": "Let your guests view photos where they appear - automatically sorted with facial recognition. No tagging required!",
+          "className": "border-b col-span-1 lg:col-span-2"
+        },
+        "item3": {
+          "title": "Momentry Drop",
+          "description": "Guests can easily upload their own photos with the event owner, and feel part of the experience.",
+          "className": "col-span-1 lg:col-span-3 lg:border-r rtl:lg:border-l"
+        },
+        "item4": {
+          "title": "Secure, Global Storage",
+          "description": "All photos are stored safely using AWS S3 with worldwide distribution - ensuring lightning-fast delivery anywhere.",
+          "className": "col-span-1 lg:col-span-3 border-b lg:border-none"
+        }
+      }
+    },
+    "workflow": {
+      "headline": "From Contact to Gallery - Here's How It Works",
+      "subhead": "Momentry's simple workflow makes it easy to create and share your event gallery.",
+      "steps": {
+        "item1": {
+          "title": "Contact",
+          "content": "Event owner signs up and submits their event details."
+        },
+        "item2": {
+          "title": "Setup",
+          "content": "Gallery is created instantly with customizable options."
+        },
+        "item3": {
+          "title": "Share",
+          "content": "Event owner shares the gallery link with guests via email or social media."
+        },
+        "item4": {
+          "title": "Upload",
+          "content": "Guests upload their photos directly to the gallery."
+        },
+        "item5": {
+          "title": "Enjoy",
+          "content": "Everyone can view, comment, and relive the memories together."
+        }
+      }
+    },
+    "pricing": {
+      "headline": "Simple Price for Every Moment",
+      "subhead": "No hidden fees, no surprises. Just a straightforward plan to capture your memories.",
+      "modes": {
+        "annual": "Annual",
+        "monthly": "Monthly"
+      },
+      "plans": {
+        "subscription1": {
+          "title": "Free",
+          "price": "$0",
+          "designation": "For small events",
+          "features": [
+            "Up to 100 photos",
+            "Basic gallery features",
+            "Limited storage (1GB)",
+            "1 month hosting"
+          ],
+          "cta": "Get Started Free"
+        },
+        "subscription2": {
+          "title": "Pro",
+          "price": "$9.99",
+          "designation": "For larger events",
+          "features": [
+            "Up to 10,000 photos",
+            "Advanced gallery features",
+            "10GB storage",
+            "3 months hosting",
+            "Priority support"
+          ],
+          "cta": "Upgrade to Pro"
+        },
+        "subscription3": {
+          "title": "Business",
+          "price": "$29.99",
+          "designation": "For businesses and organizations",
+          "features": [
+            "Unlimited photos",
+            "Custom branding options",
+            "50GB storage",
+            "6 months hosting",
+            "Dedicated support"
+          ],
+          "cta": "Contact Us for Business"
+        }
+      }
+    },
+    "faq": {
+      "headline": "You've Got Questions, We've Got Answers",
+      "subhead": "Here are some common questions about Momentry. If you have more, feel free to reach out!",
+      "questions": {
+        "q1": {
+          "question": "How does Momentry work?",
+          "answer": "Momentry allows you to create a gallery for your event where guests can upload and view photos. It uses AI to organize photos by faces, making it easy to find moments with specific people."
+        },
+        "q2": {
+          "question": "Is my data secure?",
+          "answer": "Absolutely! We use AWS S3 for secure storage and ensure your photos  are protected with industry-standard encryption. Your privacy is our top priority."
+        },
+        "q3": {
+          "question": "Can I customize my gallery?",
+          "answer": "Yes! You can customize your gallery with your event's branding, colors, and layout. Make it truly yours!"
+        }
+      }
+    },
+    "cta": {
+      "headline": "Ready to Capture Your Moments?",
+      "subhead": "Sign up for Momentry today and start creating your event gallery.",
+      "cards": {
+        "card1": {
+          "title": "🎉 Try It Free",
+          "content": "Set up your event gallery in under 1 minute — no credit card needed."
+        },
+        "card2": {
+          "title": "💡 See a Demo",
+          "content": "Take a tour of how Momentry transforms events into immersive photo experiences."
+        },
+        "card3": {
+          "title": "📷 For Professionals",
+          "content": "Are you a photographer or event planner? Learn how Momentry can elevate your service."
+        }
+      }
+    }
   }
 }

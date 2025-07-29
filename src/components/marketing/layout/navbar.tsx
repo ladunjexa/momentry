@@ -19,21 +19,23 @@ import { LanguageSwitch } from "@/components/shared/language-switch";
 import { Button as HeroUIButton } from "@heroui/react";
 import { Icon as Iconify } from "@iconify/react";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const navigationItems = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
+  { href: "/", label: "home" },
+  { href: "/about", label: "about" },
   // { href: "/careers", label: "Careers" },
-  { href: "/contact", label: "Contact" },
+  { href: "/contact", label: "contact" },
   // { href: "/faq", label: "FAQ" },
-  { href: "/features", label: "Features" },
+  { href: "/features", label: "features" },
   // { href: "/legal/privacy", label: "Privacy Policy" },
   // { href: "/legal/terms", label: "Terms of Service" },
-  { href: "/pricing", label: "Pricing" },
+  { href: "/pricing", label: "pricing" },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
+  const t = useTranslations("pages");
 
   const isActive = (href: string) => {
     // remove the localized prefix from the pathname
@@ -54,7 +56,7 @@ export default function Navbar() {
 
   return (
     <HeroUINavbar
-      className="!z-[999]"
+      className="z-[10000]"
       maxWidth="2xl"
       position="sticky"
       isMenuOpen={isMenuOpen}
@@ -71,13 +73,13 @@ export default function Navbar() {
             aria-label="company name"
           >
             <Logo />
-            <p className="font-bold text-2xl">Momentry</p>
+            <p className="font-bold text-2xl hidden lg:flex">Momentry</p>
           </Link>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-4 justify-start ml-4 rtl:ml-0 rtl:mr-4">
           {navigationItems.map((item) => (
             <NavbarItem as="li" key={uuidv4()} isActive={isActive(item.href)}>
-              <Link href={item.href}>{item.label}</Link>
+              <Link href={item.href}>{t(item.label)}</Link>
             </NavbarItem>
           ))}
         </ul>
@@ -90,10 +92,10 @@ export default function Navbar() {
         <NavbarItem>
           <LanguageSwitch />
         </NavbarItem>
-        <Spacer x={2} />
         <NavbarItem className="hidden md:flex">
+          <Spacer x={2} />
           <HeroUIButton as={Link} href="/pricing" size="md" variant="bordered">
-            See our Plans
+            {t("signIn")}
           </HeroUIButton>
         </NavbarItem>
         <NavbarItem className="hidden md:flex">
@@ -112,32 +114,20 @@ export default function Navbar() {
               />
             }
           >
-            Get Started
+            {t("signUp")}
           </HeroUIButton>
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarMenu>
+      <NavbarMenu className="z-[9999]">
         {navigationItems.map((item) => (
           <NavbarMenuItem key={uuidv4()} isActive={isActive(item.href)}>
             <Link href={item.href} onClick={toggleMenu}>
-              {item.label}
+              {t(item.label)}
             </Link>
           </NavbarMenuItem>
         ))}
       </NavbarMenu>
-      {/* <NavbarBrand href="/">Momentry</NavbarBrand>
-      <NavbarContent>
-        <NavbarItem href="/">Home</NavbarItem>
-        <NavbarItem href="/about">About</NavbarItem>
-        <NavbarItem href="/contact">Contact</NavbarItem>
-      </NavbarContent>
-      <NavbarMenuToggle />
-      <NavbarMenu>
-        <NavbarMenuItem href="/">Home</NavbarMenuItem>
-        <NavbarMenuItem href="/about">About</NavbarMenuItem>
-        <NavbarMenuItem href="/contact">Contact</NavbarMenuItem>
-      </NavbarMenu> */}
     </HeroUINavbar>
   );
 }

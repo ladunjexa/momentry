@@ -11,6 +11,18 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "ui.aceternity.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "startup-template-sage.vercel.app",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   eslint: {

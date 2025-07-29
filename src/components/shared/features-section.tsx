@@ -6,52 +6,34 @@ import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import { IconBrandYoutubeFilled } from "@tabler/icons-react";
-import {
-  headerWrapper,
-  subtitle,
-  description,
-  title,
-} from "./shared/primitives";
+import { useTranslations } from "next-intl";
 
-export default function FeaturesSectionDemo() {
-  const features = [
-    {
-      title: "Track issues effectively",
-      description:
-        "Track and manage your project issues with ease using our intuitive interface.",
-      skeleton: <SkeletonOne />,
-      className:
-        "col-span-1 lg:col-span-4 border-b lg:border-r rtl:lg:border-l dark:border-primary-800",
-    },
-    {
-      title: "Capture pictures with AI",
-      description:
-        "Capture stunning photos effortlessly using our advanced AI technology.",
-      skeleton: <SkeletonTwo />,
-      className: "border-b col-span-1 lg:col-span-2 dark:border-primary-800",
-    },
-    {
-      title: "Watch our AI on YouTube",
-      description:
-        "Whether its you or Tyler Durden, you can get to know about our product on YouTube",
-      skeleton: <SkeletonThree />,
-      className:
-        "col-span-1 lg:col-span-3 lg:border-r rtl:lg:border-l dark:border-primary-800",
-    },
-    {
-      title: "Deploy in seconds",
-      description:
-        "With our blazing fast, state of the art, cutting edge, we are so back cloud servies (read AWS) - you can deploy your model in seconds.",
-      skeleton: <SkeletonFour />,
-      className: "col-span-1 lg:col-span-3 border-b lg:border-none",
-    },
-  ];
+export function FeaturesSectionDemo() {
+  const t = useTranslations("marketing.features.cards");
+  const keys = ["item1", "item2", "item3", "item4"] as const;
+  const skeletonComponents = [
+    SkeletonOne,
+    SkeletonTwo,
+    SkeletonThree,
+    SkeletonFour,
+  ] as const;
+
+  const features = keys.map((key, index) => ({
+    title: t(`${key}.title`),
+    description: t(`${key}.description`),
+    skeleton: skeletonComponents[index % skeletonComponents.length](),
+    className: t(`${key}.className`),
+  }));
+
   return (
     <div className="relative z-20 max-w-7xl mx-auto">
-      <div className="relative ">
-        <div className="grid grid-cols-1 lg:grid-cols-6 mt-12 xl:border rounded-md border-primary-800">
+      <div className="relative">
+        <div className="grid grid-cols-1 lg:grid-cols-6 mt-12 xl:border rounded-md border-foreground/20">
           {features.map((feature) => (
-            <FeatureCard key={feature.title} className={feature.className}>
+            <FeatureCard
+              key={feature.title}
+              className={`${feature.className} border-foreground/20`}
+            >
               <FeatureTitle>{feature.title}</FeatureTitle>
               <FeatureDescription>{feature.description}</FeatureDescription>
               <div className=" h-full w-full">{feature.skeleton}</div>
@@ -79,7 +61,7 @@ const FeatureCard = ({
 
 const FeatureTitle = ({ children }: { children?: React.ReactNode }) => {
   return (
-    <p className=" max-w-5xl mx-auto text-left rtl:text-right tracking-tight text-xl md:text-2xl md:leading-snug">
+    <p className=" max-w-5xl mx-auto text-left rtl:text-right tracking-tight text-black dark:text-white text-xl md:text-2xl md:leading-snug">
       {children}
     </p>
   );
@@ -90,7 +72,7 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
     <p
       className={cn(
         "text-sm md:text-base  max-w-4xl text-left rtl:text-right mx-auto",
-        "text-default-500 text-center font-normal dark:text-foreground/70",
+        "text-neutral-500 text-center font-normal dark:text-neutral-300",
         "text-left rtl:text-right max-w-sm mx-0 md:text-sm my-2"
       )}
     >
@@ -102,15 +84,15 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
 export const SkeletonOne = () => {
   return (
     <div className="relative flex py-8 px-2 gap-10 h-full">
-      <div className="w-full  p-5  mx-auto bg-white dark:bg-default-900 shadow-2xl group h-full">
+      <div className="w-full  p-5  mx-auto bg-white dark:bg-neutral-900 shadow-2xl group h-full">
         <div className="flex flex-1 w-full h-full flex-col space-y-2  ">
           {/* TODO */}
           <img
-            src="/sample-photo-65.jpg"
+            src="https://ui.aceternity.com/linear.webp"
             alt="header"
             width={800}
             height={800}
-            className="h-full w-full aspect-square object-cover object-left-top rounded-sm dark:invert-0 invert"
+            className="h-full w-full aspect-square object-cover object-left-top rounded-sm"
           />
         </div>
       </div>
@@ -179,7 +161,7 @@ export const SkeletonTwo = () => {
             }}
             whileHover="whileHover"
             whileTap="whileTap"
-            className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-default-800 dark:border-primary-700 border border-primary-100 shrink-0 overflow-hidden"
+            className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 border-foreground/20 border  shrink-0 overflow-hidden"
           >
             <img
               src={image}
@@ -201,7 +183,7 @@ export const SkeletonTwo = () => {
             variants={imageVariants}
             whileHover="whileHover"
             whileTap="whileTap"
-            className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-default-800 dark:border-primary-700 border border-primary-100 shrink-0 overflow-hidden"
+            className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 border-foreground/20 border  shrink-0 overflow-hidden"
           >
             <img
               src={image}
@@ -223,7 +205,7 @@ export const SkeletonTwo = () => {
 export const SkeletonFour = () => {
   return (
     <div className="h-60 md:h-60  flex flex-col items-center relative bg-transparent dark:bg-transparent mt-10">
-      <Globe className="absolute -right-10 md:-right-10 rtl:right-0 rtl:-left-10 -bottom-80 md:-bottom-72" />
+      <Globe className="absolute ltr:-right-10 ltr:md:-right-10 rtl:-left-10 rtl:md:-left-10 -bottom-80 md:-bottom-72" />
     </div>
   );
 };

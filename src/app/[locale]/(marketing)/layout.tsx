@@ -14,13 +14,11 @@ export default async function MarketingLayout({
     >
       <Navbar />
       <main className="flex grow w-full">
-        <section className="container mx-auto max-w-7xl px-6">
-          {children}
-        </section>
+        <section className="container mx-auto">{children}</section>
       </main>
-      <div className="relative h-[100px] md:h-[260px] w-full overflow-hidden">
+      {/* <div className="relative h-[100px] md:h-[260px] w-full overflow-hidden">
         <VideoText src="/final.webm">MOMENTRY</VideoText>
-      </div>
+      </div> */}
       <Footer />
     </div>
   );

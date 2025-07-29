@@ -15,8 +15,11 @@ import { Icon as Iconify } from "@iconify/react";
 import * as React from "react";
 import { Spotlight } from "@/components/ui/spotlight-new";
 import { Cover } from "@/components/ui/cover";
+import { useTranslations } from "next-intl";
 
 export default function Hero() {
+  const t = useTranslations("marketing.hero");
+
   return (
     <>
       <div className="absolute inset-y-0 left-0 h-full w-px bg-neutral-200/80 dark:bg-neutral-800/80">
@@ -31,7 +34,7 @@ export default function Hero() {
       <div className="px-4 py-10 md:py-20">
         <Spotlight />
         <h1 className="relative z-10 mx-auto max-w-4xl text-center text-2xl font-bold md:text-4xl lg:text-7xl dark:text-slate-300">
-          {"Simply connecting people to experience"
+          {t("headline")
             .split(" ")
             .map((word, index) => (
               <motion.span
@@ -62,9 +65,7 @@ export default function Hero() {
           }}
           className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-default-600 dark:text-default-400"
         >
-          With AI, you can launch your website in hours, not days. Try our best
-          in class, state of the art, cutting edge AI tools to get your website
-          up.
+          {t("subhead")}
         </motion.p>
         <motion.div
           initial={{
@@ -85,7 +86,7 @@ export default function Hero() {
             className="bg-[#000] text-background dark:bg-[#fff]"
             color="primary"
           >
-            See our Plans
+            {t("cta.secondary")}
           </HeroUIButton>
           <HeroUIButton
             size="lg"
@@ -98,7 +99,7 @@ export default function Hero() {
               />
             }
           >
-            Get Started
+            {t("cta.primary")}
           </HeroUIButton>
         </motion.div>
         <motion.div

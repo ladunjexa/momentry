@@ -1,5 +1,3 @@
-import FeaturesSectionDemo from "@/components/features-section-demo-2";
-import { VideoText } from "@/components/magicui/video-text";
 import {
   CallToAction,
   ClientLogos,
@@ -11,7 +9,6 @@ import {
   SocialProof,
   Workflow,
 } from "@/components/marketing/sections";
-import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import { Divider, Spacer } from "@heroui/react";
 
 import * as React from "react";
