@@ -19,9 +19,7 @@ export default async function MarketingLayout({
         </section>
       </main>
       <div className="relative h-[100px] md:h-[260px] w-full overflow-hidden">
-        <VideoText src="https://cdn.magicui.design/ocean-small.webm">
-          MOMENTRY
-        </VideoText>
+        <VideoText src="/final.webm">MOMENTRY</VideoText>
       </div>
       <Footer />
     </div>

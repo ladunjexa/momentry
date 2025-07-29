@@ -44,4 +44,6 @@ next-env.d.ts
 .git
 
 # public
-public/interior.mp4
+public/cuted.mp4
+public/original-comporessed.mp4
+public/original.mp4
