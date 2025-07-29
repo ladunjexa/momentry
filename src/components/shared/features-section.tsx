@@ -148,6 +148,7 @@ export const SkeletonTwo = () => {
       zIndex: 100,
     },
   };
+
   return (
     <div className="relative flex flex-col items-start p-8 gap-10 h-full overflow-hidden">
       {/* TODO */}

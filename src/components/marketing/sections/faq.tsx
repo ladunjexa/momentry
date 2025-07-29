@@ -43,7 +43,7 @@ export default function FAQ() {
         </div>
       </div>
       <Spacer y={8} />
-      <Accordion variant="splitted">
+      <Accordion variant="shadow" className="max-w-5xl mx-auto">
         {accordionItems.map(({ key, title, content }) => (
           <AccordionItem
             key={key}

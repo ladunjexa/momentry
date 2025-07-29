@@ -17,7 +17,7 @@ export default function SectionHeader({ page }: { page: string }) {
   return (
     <header>
       <div className="w-full bg-background text-foreground flex flex-col items-center justify-center overflow-hidden rounded-md scale-60">
-        <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center relative z-20">
+        <h1 className="md:text-7xl text-4xl lg:text-9xl font-bold text-center relative z-20">
           {t(page)}
         </h1>
         <div className="w-[40rem] h-10 relative">

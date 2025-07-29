@@ -24,7 +24,7 @@ export default function PricingSection() {
     highlighted: index === 1, // Highlight the second plan
   }));
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto">
       <div className="text-center max-w-3xl mx-auto mb-12">
         <div className="inline-flex items-center bg-black/[0.03] dark:bg-white/[0.03] rounded-full p-1">
           <button
