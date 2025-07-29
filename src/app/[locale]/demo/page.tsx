@@ -4,7 +4,6 @@ import Image from "next/image";
 import { create } from "zustand";
 import { useQuery } from "@tanstack/react-query";
 import { usePosts, fetchPosts } from "@/hooks/use-posts";
-import Complib from "@/components/complib";
 import { useTranslations } from "next-intl";
 
 type Store = {
@@ -35,8 +34,6 @@ export default function Home() {
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       {t("title")}
-      <Complib />
-
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <Image
           className="dark:invert"

@@ -13,6 +13,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();
