@@ -41,8 +41,6 @@ export default function Navbar() {
     if (normalizedPathname === "" && href === "/") {
       return true; // Home is active when pathname is root
     }
-    console.log("Normalized Pathname:", normalizedPathname);
-    console.log("Checking active for href:", href);
     return (
       normalizedPathname === href || normalizedPathname.startsWith(`${href}/`)
     );
