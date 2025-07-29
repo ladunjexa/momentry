@@ -34,10 +34,10 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   return (
     <div
-      className="w-full bg-foreground/2 font-sans md:p-10 rounded-xl"
+      className="w-full bg-foreground/2 font-sans max-md:pt-10 md:p-10 rounded-xl"
       ref={containerRef}
     >
-      <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
+      <div ref={ref} className="relative max-w-7xl mx-auto pb-20 space-y-8">
         {data.map((item, index) => (
           <div key={index} className="flex justify-start md:gap-10">
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
