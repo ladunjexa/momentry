@@ -48,6 +48,12 @@ const SignInPageDemo = () => {
   return (
     <div className="bg-background text-foreground">
       <SignInPage
+        title={
+          <span className="font-light text-foreground tracking-tighter">
+            Forgot your password
+          </span>
+        }
+        description="Please enter the email address you'd like your password reset link sent to."
         heroImageSrc="https://images.unsplash.com/photo-1642615835477-d303d7dc9ee9?w=2160&q=80"
         testimonials={sampleTestimonials}
         onSignIn={handleSignIn}
