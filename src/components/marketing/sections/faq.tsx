@@ -27,7 +27,7 @@ export default function FAQ() {
   return (
     <main className={sectionWrapper()}>
       <div className={headerWrapper({ className: "space-y-4" })}>
-        <div className="flex flex-col items-center justify-center md:flex-row md:space-x-2">
+        <div className="flex flex-col items-center justify-center xl:flex-row xl:space-x-2">
           {/* whitespace-nowrap*/}
           <h1 className={title()}>{headlineWithoutLastWord}</h1>
           <PointerHighlight>
