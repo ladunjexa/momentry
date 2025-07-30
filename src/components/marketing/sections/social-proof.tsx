@@ -64,7 +64,7 @@ export default function SocialProof() {
               "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
             name: "Lisa Thompson",
             designation: "VP of Technology at FutureNet",
-            src: "/assets/couple5.jpg",
+            src: "/assets/couple1.jpg",
           },
         ]}
       />

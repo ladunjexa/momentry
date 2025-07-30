@@ -151,7 +151,7 @@ export default function Navbar({
       )}
 
       {!isShowcase ? (
-        <NavbarMenu className="z-[9999]">
+        <NavbarMenu className={"z-[10000]"}>
           {navigationItems.map((item) => (
             <NavbarMenuItem key={uuidv4()} isActive={isActive(item.href)}>
               <Link href={"#"} onClick={toggleMenu}>

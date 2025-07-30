@@ -7,7 +7,6 @@ import {
   subtitle,
   title,
 } from "@/components/shared/primitives";
-import { Chip, Spacer } from "@heroui/react";
 import * as React from "react";
 import { Icon as Iconify } from "@iconify/react";
 import { v4 as uuidv4 } from "uuid";
@@ -59,7 +58,7 @@ export default function ClientLogos() {
           Built with industry-standard tools and best practices
         </h2>
         {/* <div className="flex items-center justify-center space-x-8 max-h-fit"> */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 max-md:gap-x-24 md:space-x-16 lg:space-x-24">
           {companies.map((company) => (
             <span
               key={uuidv4()}
@@ -73,15 +72,3 @@ export default function ClientLogos() {
     </main>
   );
 }
-
-// <main className={sectionWrapper({ padding: "none" })}>
-//   <div className="flex flex-wrap items-center justify-center gap-4 md:gap-16 max-lg:mt-10">
-//     {companies.map((company) => (
-//       <React.Fragment key={uuidv4()}>
-//         <div className="flex max-w-24 md:max-w-60 gap-2">
-//           {company.icon}
-//         </div>
-//       </React.Fragment>
-//     ))}
-//   </div>
-// </main>

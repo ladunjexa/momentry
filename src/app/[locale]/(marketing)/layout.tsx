@@ -13,12 +13,9 @@ export default async function MarketingLayout({
       id="marketing-container"
     >
       <Navbar />
-      <main className="flex grow w-full">
+      <main className="flex-grow w-full">
         <section className="container mx-auto">{children}</section>
       </main>
-      {/* <div className="relative h-[100px] md:h-[260px] w-full overflow-hidden">
-        <VideoText src="/final.webm">MOMENTRY</VideoText>
-      </div> */}
       <Footer />
     </div>
   );

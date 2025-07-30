@@ -64,7 +64,7 @@ export default function Footer() {
             <Spacer y={8} />
             <div>
               <h3 className="font-extrabold">Call us</h3>
-              <p>+1 800 854-36-80</p>
+              <p className="text-default-500">+1 800 854-36-80</p>
             </div>
           </div>
           {footerCategories.map((category) => (
@@ -105,16 +105,4 @@ export default function Footer() {
       </footer>
     </div>
   );
-}
-
-{
-  /*<footer
-  className="container mx-auto max-w-7xl px-6 py-4 text-center"
-  role="contentinfo"
-  aria-label="site footer"
->
-  <p className="text-sm text-gray-500">
-    © {new Date().getFullYear()} Your Company. All rights reserved.
-  </p>
-</footer>*/
 }

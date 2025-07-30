@@ -63,11 +63,11 @@ export default function Page() {
             id="showcase"
             className="columns-2 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 space-y-2 gap-2"
           >
-            {Array.from({ length: 75 - 34 }).map((_, i) => (
+            {Array.from({ length: 500 }).map((_, i) => (
               <div key={uuidv4()} className="relative w-full group">
                 <Image
                   data-fancybox="showcase"
-                  src={`/highlights/sample-photo-${i + 34}.jpg`}
+                  src={`/highlights/sample-photo-${(i % 41) + 34}.jpg`}
                   alt="Sample Photo"
                   radius="none"
                   className="cursor-pointer brightness-95 hover:brightness-110"
