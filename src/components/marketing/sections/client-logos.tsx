@@ -1,3 +1,5 @@
+"use client";
+
 import {
   description,
   headerWrapper,
@@ -5,7 +7,7 @@ import {
   subtitle,
   title,
 } from "@/components/shared/primitives";
-import { Spacer } from "@heroui/react";
+import { Chip, Spacer } from "@heroui/react";
 import * as React from "react";
 import { Icon as Iconify } from "@iconify/react";
 import { v4 as uuidv4 } from "uuid";
@@ -43,15 +45,40 @@ export const companies = [
 export default function ClientLogos() {
   return (
     <main className={sectionWrapper({ padding: "none" })}>
-      <div className="flex flex-wrap items-center justify-center gap-4 md:gap-16 max-lg:mt-10">
-        {companies.map((company) => (
-          <React.Fragment key={uuidv4()}>
-            <div className="flex md:max-w-60 max-w-24 gap-2">
-              {company.icon}
-            </div>
-          </React.Fragment>
-        ))}
+      <div className="flex flex-col items-center">
+        <Chip
+          classNames={{
+            // base: "bg-linear-to-br from-danger-500 to-warning-500 border-small border-white/50 shadow-pink-500/30","
+            content: "drop-shadow-xs shadow-black text-warning",
+          }}
+          variant="bordered"
+        >
+          Last updated: 30 Jul 2030
+        </Chip>
+        <Spacer y={4} />
+        <h2 className="text-md font-semibold sm:text-2xl">
+          Built with industry-standard tools and best practices
+        </h2>
+        <div className="flex flex-wrap items-center justify-center space-x-8 max-h-fit">
+          {companies.map((company) => (
+            <React.Fragment key={uuidv4()}>
+              <span>{company.icon}</span>
+            </React.Fragment>
+          ))}
+        </div>
       </div>
     </main>
   );
 }
+
+// <main className={sectionWrapper({ padding: "none" })}>
+//   <div className="flex flex-wrap items-center justify-center gap-4 md:gap-16 max-lg:mt-10">
+//     {companies.map((company) => (
+//       <React.Fragment key={uuidv4()}>
+//         <div className="flex max-w-24 md:max-w-60 gap-2">
+//           {company.icon}
+//         </div>
+//       </React.Fragment>
+//     ))}
+//   </div>
+// </main>
