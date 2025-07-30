@@ -46,7 +46,7 @@ export default function ClientLogos() {
   return (
     <main className={sectionWrapper({ padding: "none" })}>
       <div className="flex flex-col items-center">
-        <Chip
+        {/* <Chip
           classNames={{
             // base: "bg-linear-to-br from-danger-500 to-warning-500 border-small border-white/50 shadow-pink-500/30","
             content: "drop-shadow-xs shadow-black text-warning",
@@ -54,16 +54,19 @@ export default function ClientLogos() {
           variant="bordered"
         >
           Last updated: 30 Jul 2030
-        </Chip>
-        <Spacer y={4} />
+        </Chip> */}
         <h2 className="text-md font-semibold sm:text-2xl">
           Built with industry-standard tools and best practices
         </h2>
-        <div className="flex flex-wrap items-center justify-center space-x-8 max-h-fit">
+        {/* <div className="flex items-center justify-center space-x-8 max-h-fit"> */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 space-x-12">
           {companies.map((company) => (
-            <React.Fragment key={uuidv4()}>
-              <span>{company.icon}</span>
-            </React.Fragment>
+            <span
+              key={uuidv4()}
+              className="max-w-24 md:max-w-60 max-h-12 md:max-h-16"
+            >
+              {company.icon}
+            </span>
           ))}
         </div>
       </div>

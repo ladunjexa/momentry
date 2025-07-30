@@ -144,6 +144,19 @@
             "Dedicated support"
           ],
           "cta": "Contact Us for Business"
+        },
+        "subscription4": {
+          "title": "Enterprise",
+          "price": "Custom",
+          "designation": "For large-scale events",
+          "features": [
+            "Unlimited photos",
+            "Custom solutions",
+            "Unlimited storage",
+            "12 months hosting",
+            "24/7 support"
+          ],
+          "cta": "Get a Custom Quote"
         }
       }
     },
@@ -162,6 +175,18 @@
         "q3": {
           "question": "Can I customize my gallery?",
           "answer": "Yes! You can customize your gallery with your event's branding, colors, and layout. Make it truly yours!"
+        },
+        "q4": {
+          "question": "What if I run out of storage?",
+          "answer": "You can easily upgrade your plan to get more storage. We offer flexible options to suit your needs."
+        },
+        "q5": {
+          "question": "How do I get started?",
+          "answer": "Just sign up for a free account, create your event gallery, and start inviting your guests. It's that simple!"
+        },
+        "q6": {
+          "question": "Can I use Momentry for professional events?",
+          "answer": "Absolutely! Momentry is perfect for weddings, corporate events, parties, and more. It provides a professional way to manage and share event photos."
         }
       }
     },

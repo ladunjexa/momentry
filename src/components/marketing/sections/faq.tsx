@@ -15,7 +15,7 @@ import * as React from "react";
 
 export default function FAQ() {
   const t = useTranslations("marketing.faq");
-  const keys = ["q1", "q2", "q3"] as const;
+  const keys = ["q1", "q2", "q3", "q4", "q5", "q6"] as const;
 
   const accordionItems = keys.map((key) => ({
     key,
@@ -43,7 +43,7 @@ export default function FAQ() {
         </div>
       </div>
       <Spacer y={8} />
-      <Accordion variant="shadow" className="max-w-5xl mx-auto">
+      <Accordion variant="shadow" className="max-w-6xl mx-auto">
         {accordionItems.map(({ key, title, content }) => (
           <AccordionItem
             key={key}

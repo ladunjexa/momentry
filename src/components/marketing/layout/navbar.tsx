@@ -66,7 +66,7 @@ export default function Navbar({
   return (
     <HeroUINavbar
       className={!isShowcase ? "z-[10000]" : ""}
-      maxWidth={!isShowcase ? "2xl" : "full"}
+      maxWidth={!isShowcase ? "xl" : "full"}
       position="sticky"
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}

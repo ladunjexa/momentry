@@ -22,7 +22,7 @@ export function WobbleCardDemo() {
           </p>
         </div>
         <img
-          src="/thumbnail-showcase-dark.jpeg"
+          src="/thumbnail-showcase-light.jpeg"
           width={380}
           height={500}
           alt="linear demo image"
@@ -48,7 +48,7 @@ export function WobbleCardDemo() {
         </div>
         <img
           src="/thumbnail-showcase-dark.jpeg"
-          width={500}
+          width={350}
           height={500}
           alt="linear demo image"
           className="absolute ltr:-right-10 ltr:md:-right-[40%] ltr:lg:-right-[20%] rtl:-left-10 rtl:md:-left-[40%] rtl:lg:-left-[20%] -bottom-10 object-contain rounded-2xl"

@@ -44,61 +44,66 @@ const footerSignature = [
 
 export default function Footer() {
   return (
-    <footer className="container mx-auto max-w-7xl px-6 py-8 bg-foreground/1">
-      <div className="grid grid-cols-5 gap-6">
-        <div className="flex">
-          <Logo />
-          <h1 className="font-bold mt-2">Momentry</h1>
-        </div>
-        <div className="flex flex-col">
-          <h3 className="font-extrabold">Follow us</h3>
-          <Spacer y={2} />
-          <ul className="flex items-center">
-            <Iconify icon="logos:facebook" className="mr-2" width={22} />
-            <Iconify icon="logos:twitter" className="mr-2" width={22} />
-            <Iconify icon="skill-icons:instagram" className="mr-2" width={22} />
-            <Iconify icon="skill-icons:linkedin" className="mr-2" width={22} />
-            <Iconify icon="mdi:github" className="mr-2" width={22} />
-          </ul>
-          <Spacer y={4} />
-          <div>
-            <h3 className="font-extrabold">Call us</h3>
-            <p>+1 800 854-36-80</p>
+    <div className="bg-foreground/3">
+      <footer className="container mx-auto max-w-7xl px-6 py-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="flex">
+            <Logo />
+            <h1 className="font-bold mt-2">Momentry</h1>
           </div>
-        </div>
-        {footerCategories.map((category) => (
-          <div key={category.title} className="flex flex-col">
-            <h3 className="font-extrabold">{category.title}</h3>
-            <Spacer y={5} />
-            <ul>
-              {category.links.map((link) => (
-                <li key={uuidv4()}>
-                  <Link href={link.href} className="text-default-500">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+          <div className="flex flex-col">
+            <h3 className="font-extrabold">Follow us</h3>
+            <Spacer y={3} />
+            <ul className="flex items-center space-x-3">
+              <Iconify icon="logos:facebook" width={26} />
+              <Iconify icon="logos:twitter" width={26} />
+              <Iconify icon="skill-icons:instagram" width={26} />
+              <Iconify icon="skill-icons:linkedin" width={26} />
+              <Iconify icon="mdi:github" width={26} />
             </ul>
+            <Spacer y={8} />
+            <div>
+              <h3 className="font-extrabold">Call us</h3>
+              <p>+1 800 854-36-80</p>
+            </div>
           </div>
-        ))}
-      </div>
-      <Spacer y={4} />
-      <Divider className="my-4" />
-      <div className="flex items-center justify-between text-sm text-default-500">
-        <ul>
-          {footerSignature.map((item) => (
-            <li key={uuidv4()} className="inline-block mr-4">
-              <Link href={item.href} className="text-default-500">
-                {item.label}
-              </Link>
-            </li>
+          {footerCategories.map((category) => (
+            <div key={category.title} className="flex flex-col">
+              <h3 className="font-extrabold">{category.title}</h3>
+              <Spacer y={4} />
+              <ul>
+                {category.links.map((link) => (
+                  <li key={uuidv4()}>
+                    <Link href={link.href} className="text-default-500">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
-        </ul>
-        <p className="text-default-700 dark:text-default-300 ml-auto">
-          &copy; {new Date().getFullYear()} Momentry. All rights reserved.
-        </p>
-      </div>
-    </footer>
+        </div>
+        <Spacer y={4} />
+        <Divider className="my-4" />
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-default-500">
+          <ul className="flex flex-wrap justify-center md:justify-start gap-4">
+            {footerSignature.map((item) => (
+              <li key={uuidv4()}>
+                <Link
+                  href={item.href}
+                  className="text-default-500 hover:underline"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="text-default-700 dark:text-default-300 text-center md:text-right">
+            &copy; {new Date().getFullYear()} Momentry. All rights reserved.
+          </p>
+        </div>
+      </footer>
+    </div>
   );
 }
 

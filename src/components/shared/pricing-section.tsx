@@ -6,7 +6,12 @@ import * as React from "react";
 
 export default function PricingSection() {
   const t = useTranslations("marketing.pricing");
-  const keys = ["subscription1", "subscription2", "subscription3"] as const;
+  const keys = [
+    "subscription1",
+    "subscription2",
+    "subscription3",
+    "subscription4",
+  ] as const;
 
   const [isAnnual, setIsAnnual] = React.useState(false);
 
@@ -24,8 +29,8 @@ export default function PricingSection() {
     highlighted: index === 1, // Highlight the second plan
   }));
   return (
-    <div className="max-w-7xl">
-      <div className="text-center max-w-3xl mx-auto mb-12">
+    <div className="w-full mx-auto">
+      <div className="text-center mb-12">
         <div className="inline-flex items-center bg-black/[0.03] dark:bg-white/[0.03] rounded-full p-1">
           <button
             className={`px-6 py-2.5 rounded-full text-sm font-medium transition-colors ${
@@ -50,7 +55,7 @@ export default function PricingSection() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full mx-auto">
         {plans.map((plan, index) => (
           <div
             key={plan.name}
