@@ -48,7 +48,7 @@ export default function Hero() {
                 }}
                 className="mr-2 inline-block"
               >
-                {word === "experience" ? <Cover>{word}</Cover> : word}
+                {word === "Experience" ? <Cover>{word}</Cover> : word}
               </motion.span>
             ))}
         </h1>
