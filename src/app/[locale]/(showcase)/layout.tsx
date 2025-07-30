@@ -9,6 +9,7 @@ export default function ShowcaseLayout({
     <div
       className="relative flex flex-col min-h-screen"
       id="showcase-container"
+      dir="ltr" // ! FORCING LTR DIRECTION
     >
       <main className="w-full flex-grow">{children}</main>
       <ShowcaseDock />
