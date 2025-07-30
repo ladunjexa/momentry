@@ -22,7 +22,7 @@ export default function Page() {
 
   return (
     <main>
-      <AuroraBackground>
+      <AuroraBackground className="z-100">
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
