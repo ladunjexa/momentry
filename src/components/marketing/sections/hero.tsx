@@ -128,7 +128,7 @@ export default function Hero() {
                 animationStyle="top-in-bottom-out"
                 videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
                 // thumbnailSrc="https://startup-template-sage.vercel.app/hero-light.png"
-                thumbnailSrc="/thumbnail-showcase-light.jpeg"
+                thumbnailSrc="/output2.jpg"
                 thumbnailAlt="Hero Video"
                 width={1000}
                 height={1000}
@@ -137,7 +137,7 @@ export default function Hero() {
                 className="hidden dark:block"
                 animationStyle="top-in-bottom-out"
                 videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
-                thumbnailSrc="/thumbnail-showcase-dark.jpeg"
+                thumbnailSrc="/output.jpg"
                 thumbnailAlt="Hero Video"
                 width={1000}
                 height={1000}
