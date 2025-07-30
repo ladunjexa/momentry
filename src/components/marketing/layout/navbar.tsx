@@ -33,7 +33,15 @@ const navigationItems = [
   { href: "/pricing", label: "pricing" },
 ];
 
-export default function Navbar() {
+export default function Navbar({
+  isShowcase = false,
+  isDashboard = false,
+  isBlurred = true,
+}: {
+  isShowcase?: boolean;
+  isDashboard?: boolean;
+  isBlurred?: boolean;
+}) {
   const pathname = usePathname();
   const t = useTranslations("pages");
 
@@ -61,7 +69,7 @@ export default function Navbar() {
       position="sticky"
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      isBlurred
+      isBlurred={isBlurred}
     >
       {/* Menu toggle and brand */}
       <NavbarContent justify="start" className="basis-1/5 sm:basis-full">
@@ -72,62 +80,81 @@ export default function Navbar() {
             href="/"
             aria-label="company name"
           >
-            <Logo />
-            <p className="font-bold text-2xl hidden lg:flex">Momentry</p>
+            {!isShowcase ? <Logo /> : null}
+            <p className="font-bold text-2xl hidden lg:flex">
+              {isShowcase ? "GIL & KORIN" : "Momentry"}
+            </p>
           </Link>
         </NavbarBrand>
-        <ul className="hidden lg:flex gap-4 justify-start ml-4 rtl:ml-0 rtl:mr-4">
+        {!isShowcase ? (
+          <ul className="hidden lg:flex gap-4 justify-start ml-4 rtl:ml-0 rtl:mr-4">
+            {navigationItems.map((item) => (
+              <NavbarItem as="li" key={uuidv4()} isActive={isActive(item.href)}>
+                <Link href={"#"}>{t(item.label)}</Link>
+              </NavbarItem>
+            ))}
+          </ul>
+        ) : null}
+      </NavbarContent>
+
+      {!isShowcase ? (
+        <NavbarContent justify="end">
+          <NavbarItem>
+            <ThemeSwitch />
+          </NavbarItem>
+          <NavbarItem>
+            <LanguageSwitch />
+          </NavbarItem>
+          <NavbarItem className="hidden md:flex">
+            <Spacer x={2} />
+            <HeroUIButton
+              as={Link}
+              href="/pricing"
+              size="md"
+              variant="bordered"
+            >
+              {t("signIn")}
+            </HeroUIButton>
+          </NavbarItem>
+          <NavbarItem className="hidden md:flex">
+            <HeroUIButton
+              as={Link}
+              href="/pricing"
+              size="md"
+              className="bg-[#000] text-background dark:bg-[#fff]"
+              color="primary"
+              variant="shadow"
+              endContent={
+                <Iconify
+                  icon="lucide:arrow-right"
+                  className="rtl:rotate-180 overflow-hidden"
+                  width={22}
+                />
+              }
+            >
+              {t("signUp")}
+            </HeroUIButton>
+          </NavbarItem>
+        </NavbarContent>
+      ) : (
+        <NavbarContent justify="end">
+          <NavbarItem>
+            <ThemeSwitch />
+          </NavbarItem>
+        </NavbarContent>
+      )}
+
+      {!isShowcase ? (
+        <NavbarMenu className="z-[9999]">
           {navigationItems.map((item) => (
-            <NavbarItem as="li" key={uuidv4()} isActive={isActive(item.href)}>
-              <Link href={"#"}>{t(item.label)}</Link>
-            </NavbarItem>
+            <NavbarMenuItem key={uuidv4()} isActive={isActive(item.href)}>
+              <Link href={"#"} onClick={toggleMenu}>
+                {t(item.label)}
+              </Link>
+            </NavbarMenuItem>
           ))}
-        </ul>
-      </NavbarContent>
-
-      <NavbarContent justify="end">
-        <NavbarItem>
-          <ThemeSwitch />
-        </NavbarItem>
-        <NavbarItem>
-          <LanguageSwitch />
-        </NavbarItem>
-        <NavbarItem className="hidden md:flex">
-          <Spacer x={2} />
-          <HeroUIButton as={Link} href="/pricing" size="md" variant="bordered">
-            {t("signIn")}
-          </HeroUIButton>
-        </NavbarItem>
-        <NavbarItem className="hidden md:flex">
-          <HeroUIButton
-            as={Link}
-            href="/pricing"
-            size="md"
-            className="bg-[#000] text-background dark:bg-[#fff]"
-            color="primary"
-            variant="shadow"
-            endContent={
-              <Iconify
-                icon="lucide:arrow-right"
-                className="rtl:rotate-180 overflow-hidden"
-                width={22}
-              />
-            }
-          >
-            {t("signUp")}
-          </HeroUIButton>
-        </NavbarItem>
-      </NavbarContent>
-
-      <NavbarMenu className="z-[9999]">
-        {navigationItems.map((item) => (
-          <NavbarMenuItem key={uuidv4()} isActive={isActive(item.href)}>
-            <Link href={"#"} onClick={toggleMenu}>
-              {t(item.label)}
-            </Link>
-          </NavbarMenuItem>
-        ))}
-      </NavbarMenu>
+        </NavbarMenu>
+      ) : null}
     </HeroUINavbar>
   );
 }

@@ -5,7 +5,6 @@ import {
   ArrowDownToLine,
   Send,
   CameraIcon,
-  ArrowUpFromDot,
   ArrowUp,
 } from "lucide-react";
 import * as React from "react";
@@ -13,9 +12,10 @@ import { Image, Spacer } from "@heroui/react";
 import { v4 as uuidv4 } from "uuid";
 import { Button as HeroUIButton } from "@heroui/react";
 import Fancybox, { FancyboxOptions } from "@/components/shared/fancybox";
-import { sectionWrapper } from "@/components/shared/primitives";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { motion } from "motion/react";
+import { Icon as Iconify } from "@iconify/react";
+import Navbar from "@/components/marketing/layout/navbar";
 
 export default function Page() {
   const showcaseRef = React.useRef<HTMLDivElement | null>(null);
@@ -56,7 +56,8 @@ export default function Page() {
           </HeroUIButton>
         </motion.div>
       </AuroraBackground>
-      <section className="w-full p-4" ref={showcaseRef}>
+      <Navbar isShowcase isBlurred={false} />
+      <section className="w-full px-4" ref={showcaseRef}>
         <Fancybox options={FancyboxOptions}>
           <div
             id="showcase"
@@ -72,22 +73,26 @@ export default function Page() {
                   className="cursor-pointer brightness-95 hover:brightness-110"
                   isZoomed
                 />
-                <div className="absolute z-40 bottom-0 w-full h-12 bg-gradient-to-b from-transparent via-black/20 to-black/60 backdrop-blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <div className="absolute z-40 bottom-0 w-full h-12 bg-gradient-to-b from-transparent via-black/20 to-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                   <div className="flex justify-end items-center h-full px-3 space-x-3">
-                    <Heart
-                      className="!text-white/90 hover:!text-white cursor-pointer transition-all duration-200"
+                    <Iconify
+                      icon="solar:heart-linear"
                       strokeWidth={1.5}
-                      size={20}
+                      width={20}
+                      cursor={"pointer"}
                     />
-                    <ArrowDownToLine
-                      className="!text-white/90 hover:!text-white cursor-pointer transition-all duration-200"
+                    <Iconify
+                      icon="solar:download-minimalistic-linear"
                       strokeWidth={1.5}
-                      size={20}
+                      width={20}
+                      cursor={"pointer"}
                     />
-                    <Send
-                      className="!text-white/90 hover:!text-white cursor-pointer transition-all duration-200"
+
+                    <Iconify
+                      icon="solar:square-share-line-linear"
                       strokeWidth={1.5}
-                      size={20}
+                      width={20}
+                      cursor={"pointer"}
                     />
                   </div>
                 </div>
