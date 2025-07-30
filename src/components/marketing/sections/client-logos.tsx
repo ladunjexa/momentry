@@ -59,7 +59,7 @@ export default function ClientLogos() {
           Built with industry-standard tools and best practices
         </h2>
         {/* <div className="flex items-center justify-center space-x-8 max-h-fit"> */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 space-x-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
           {companies.map((company) => (
             <span
               key={uuidv4()}
