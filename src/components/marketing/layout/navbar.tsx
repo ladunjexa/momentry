@@ -20,6 +20,7 @@ import { Button as HeroUIButton } from "@heroui/react";
 import { Icon as Iconify } from "@iconify/react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
+import clsx from "clsx";
 
 const navigationItems = [
   { href: "/", label: "home" },
@@ -73,7 +74,7 @@ export default function Navbar({
     >
       {/* Menu toggle and brand */}
       <NavbarContent justify="start" className="basis-1/5 sm:basis-full">
-        <NavbarMenuToggle className="lg:hidden" />
+        {!isShowcase ? <NavbarMenuToggle className="lg:hidden" /> : null}
         <NavbarBrand as="li" className="max-w-fit">
           <Link
             className="flex justify-start items-center gap-2"
@@ -81,7 +82,12 @@ export default function Navbar({
             aria-label="company name"
           >
             {!isShowcase ? <Logo /> : null}
-            <p className="font-bold text-2xl hidden lg:flex">
+            <p
+              className={clsx(
+                "font-bold text-2xl",
+                !isShowcase && "hidden lg:flex"
+              )}
+            >
               {isShowcase ? "GIL & KORIN" : "Momentry"}
             </p>
           </Link>
