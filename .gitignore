@@ -47,3 +47,4 @@ next-env.d.ts
 public/cuted.mp4
 public/original-comporessed.mp4
 public/original.mp4
+public/highlights/*

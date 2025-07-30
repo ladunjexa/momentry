@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@fancyapps/ui':
+        specifier: 5.0.28
+        version: 5.0.28
       '@heroui/react':
         specifier: ^2.8.2
         version: 2.8.2(@types/react@19.1.9)(framer-motion@12.23.11(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.11)
@@ -196,6 +199,9 @@ packages:
   '@eslint/plugin-kit@0.3.4':
     resolution: {integrity: sha512-Ul5l+lHEcw3L5+k8POx6r74mxEYKG5kOb6Xpy2gCRW6zweT6TEhAf8vhxGgjhqrd/VO/Dirhsb+1hNpD1ue9hw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@fancyapps/ui@5.0.28':
+    resolution: {integrity: sha512-CJ0Uw/KkSHH/bE+Uz4BaWgxQgzY1Dwl6dlYZtW1SGBrQBrIRuV4G3VEG1uVw27JAB9xgCbUAJddk3JQ/kvPACA==}
 
   '@floating-ui/core@1.7.2':
     resolution: {integrity: sha512-wNB5ooIKHQc+Kui96jE/n69rHFWAVoxn5CAzL1Xdd8FG03cgY3MLO+GF9U3W737fYDSgPWA6MReKhBQBop6Pcw==}
@@ -3708,6 +3714,8 @@ snapshots:
     dependencies:
       '@eslint/core': 0.15.1
       levn: 0.4.1
+
+  '@fancyapps/ui@5.0.28': {}
 
   '@floating-ui/core@1.7.2':
     dependencies:

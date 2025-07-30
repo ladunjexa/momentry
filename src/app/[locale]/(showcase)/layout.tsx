@@ -7,14 +7,10 @@ export default function ShowcaseLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <div
-      className="relative flex flex-col min-h-screen overflow-x-hidden"
+      className="relative flex flex-col min-h-screen"
       id="showcase-container"
     >
-      <EventHero />
-      <main className="flex-grow w-screen">
-        <div></div>
-        {children}
-      </main>
+      <main className="w-full flex-grow">{children}</main>
       <Spacer y={12} />
       <Footer />
     </div>

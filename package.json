@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fancyapps/ui": "5.0.28",
     "@heroui/react": "^2.8.2",
     "@iconify/react": "^6.0.0",
     "@radix-ui/react-dropdown-menu": "^2.1.15",
