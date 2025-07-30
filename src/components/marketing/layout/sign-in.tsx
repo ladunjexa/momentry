@@ -58,7 +58,7 @@ const TestimonialCard = ({
 export const SignInPage: React.FC<SignInPageProps> = ({
   title = (
     <span className="font-light text-foreground tracking-tighter">
-      Reset Password
+      Welcome Back
     </span>
   ),
   description = "Access your account and continue your journey with us",

@@ -88,11 +88,18 @@ export const SkeletonOne = () => {
         <div className="flex flex-1 w-full h-full flex-col space-y-2  ">
           {/* TODO */}
           <img
-            src="https://ui.aceternity.com/linear.webp"
+            src="/thumbnail-showcase-dark.jpeg"
             alt="header"
             width={800}
             height={800}
-            className="h-full w-full aspect-square object-cover object-left-top rounded-sm"
+            className="h-full w-full aspect-square object-cover object-left-top rounded-sm hidden dark:block"
+          />
+          <img
+            src="/thumbnail-showcase-light.jpeg"
+            alt="header"
+            width={800}
+            height={800}
+            className="h-full w-full aspect-square object-cover object-left-top rounded-sm block dark:hidden"
           />
         </div>
       </div>

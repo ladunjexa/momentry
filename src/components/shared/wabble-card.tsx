@@ -22,8 +22,8 @@ export function WobbleCardDemo() {
           </p>
         </div>
         <img
-          src="https://ui.aceternity.com/linear.webp"
-          width={500}
+          src="/thumbnail-showcase-dark.jpeg"
+          width={380}
           height={500}
           alt="linear demo image"
           className="absolute ltr:-right-4 ltr:lg:-right-[40%] rtl:-left-4 rtl:lg:-left-[40%] grayscale filter -bottom-10 object-contain rounded-2xl"
@@ -47,7 +47,7 @@ export function WobbleCardDemo() {
           </p>
         </div>
         <img
-          src="https://ui.aceternity.com/linear.webp"
+          src="/thumbnail-showcase-dark.jpeg"
           width={500}
           height={500}
           alt="linear demo image"
