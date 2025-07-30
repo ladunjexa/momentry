@@ -36,7 +36,7 @@ export default function SocialProof() {
               "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
             name: "Sarah Chen",
             designation: "Product Manager at TechFlow",
-            src: "/assets/couple6.jpg",
+            src: "/assets/couple5.jpg",
           },
           {
             quote:
